@@ -23,7 +23,7 @@ deploy:
     access_key_id: "$AWS_ACCESS_KEY_ID"
     secret_access_key:
       secure: "$AWS_SECRET_ACCESS_KEY"
-    bucket: "$AWS_BUCKET_PRE_DEV"
+    bucket: "$AWS_BUCKET"
     on:
       branch: master
 after_deploy:
@@ -35,5 +35,5 @@ after_deploy:
   - source ./scripts/aws-credentials.sh
   - echo "done deploying"
   - aws configure set preview.cloudfront true
-  - if [ "$TRAVIS_BRANCH" = "develop" ]; then aws cloudfront create-invalidation --distribution-id
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then aws cloudfront create-invalidation --distribution-id
     $AWS_CLOUDFRONT_DISTRIBUTION_ID \--paths /*; fi

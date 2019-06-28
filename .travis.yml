@@ -3,8 +3,7 @@ python:
   - '2.7'
 branches:
   only:
-    - develop
-    - production
+    - master
 cache:
   pip: true
   directories:

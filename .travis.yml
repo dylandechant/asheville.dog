@@ -14,8 +14,7 @@ install:
   - npm ci
   - pip install awscli
 script:
-  - if [ "$TRAVIS_BRANCH" = "develop" ]; then npm run build:pre-dev ; fi
-  - if [ "$TRAVIS_BRANCH" = "production" ]; then npm run build:production ; fi
+  - npm run build
 deploy:
   - provider: s3
     skip_cleanup: true
